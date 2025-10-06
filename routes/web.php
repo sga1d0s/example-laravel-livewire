@@ -21,9 +21,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/* Counter from Livewire */
+/* LIVEWIRE */
+/* Counter */
 
-Route::get('/counter', Counter::class);
+Route::get('/counter', Counter::class)->name('counter')->middleware('auth');
+
+/* LIVEWIRE */
 
 Route::get('/health', function (Request $request) {
     try {
@@ -51,4 +54,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
