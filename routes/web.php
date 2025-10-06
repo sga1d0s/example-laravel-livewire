@@ -24,7 +24,9 @@ Route::get('/', function () {
 /* LIVEWIRE */
 /* Counter */
 
-Route::get('/counter', Counter::class)->name('counter')->middleware('auth');
+Route::get('/counter', function () {
+    return view('counter');
+})->middleware(['auth', 'verified'])->name('counter');
 
 /* LIVEWIRE */
 
