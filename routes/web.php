@@ -36,6 +36,10 @@ Route::get('/todo-list', function () {
     return view('todo-list');
 })->middleware(['auth', 'verified'])->name('todo-list');
 
+Route::get('/posts', function(){
+    return view('posts');
+})->middleware(['auth', 'verified'])->name('posts');
+
 /* LIVEWIRE */
 
 Route::get('/health', function (Request $request) {
