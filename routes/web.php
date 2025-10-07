@@ -28,6 +28,14 @@ Route::get('/counter', function () {
     return view('counter');
 })->middleware(['auth', 'verified'])->name('counter');
 
+Route::get('/create-post', function () {
+    return view('create-post');
+})->middleware(['auth', 'verified'])->name('create-post');
+
+Route::get('/todo-list', function () {
+    return view('todo-list');
+})->middleware(['auth', 'verified'])->name('todo-list');
+
 /* LIVEWIRE */
 
 Route::get('/health', function (Request $request) {
