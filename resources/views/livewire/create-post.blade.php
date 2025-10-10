@@ -1,19 +1,33 @@
 <div>
     {{-- Post test --}}
     <h1>Create Post Component</h1>
-    {{--     <div>
-        <h2>Title: {{ $title }}</h2>
-    </div> --}}
-    <span>Author: {{ $author }}</span>
+
+    <div x-data="{ count: 0 }">
+        <span x-text="count"></span>
+    </div>
 
     <form wire:submit='save'>
-        <label for="title">Title:</label>
-        <input type="text" id="title" wire:model='title'>
+        <div class="block">
+            <label>
+                <span>Title:</span>
+                <input type="text" wire:model='title'>
+                @error('title')
+                    <em>{{ $message }}</em>
+                @enderror
+            </label>
 
-        <label for="text" id="text">Text:</label>
-        <input type="text" id="text" wire:model='text'>
+            <label>
+                <span>Text:</span>
+                <input type="text" wire:model='text'>
+                @error('text')
+                    <em>{{ $message }}</em>
+                @enderror
+            </label>
+            <button type="submit">Save</button>
 
-        <button type="submit">Save</button>
+        </div>
+
+
     </form>
 
     <div>
@@ -22,11 +36,10 @@
 
             </div>
             <div wire:key='{{ $post->id }}' class="flex m-3">
-                <h3 class="p-3">{{ $post->title }}</h3>
-                <p class="p-3">{{ $post->text }}</p>
+                <li><strong>{{ $post->title }}</strong> - {{ $author }} - </li>
 
-                <button wire:click='delete({{ $post->id }})'
-                    style=" color: red; border: none; cursor: pointer;">
+                <button wire:click='delete({{ $post->id }})' wire:confirm='¿Seguro que quieres eliminar?'
+                    class="border p-1 rounded-lg">
                     Eliminar
                 </button>
             </div>

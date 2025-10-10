@@ -18,15 +18,18 @@ use App\Livewire\Counter;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/welcome');
 });
 
 /* LIVEWIRE */
 /* Counter */
 
-Route::get('/counter', function () {
+/* Route::get('/counter', function () {
     return view('counter');
-})->middleware(['auth', 'verified'])->name('counter');
+})->middleware(['auth', 'verified'])->name('counter'); */
+
+Route::get('/counter', Counter::class)
+    ->middleware(['auth', 'verified'])->name('counter');
 
 Route::get('/create-post', function () {
     return view('create-post');
@@ -36,7 +39,7 @@ Route::get('/todo-list', function () {
     return view('todo-list');
 })->middleware(['auth', 'verified'])->name('todo-list');
 
-Route::get('/posts', function(){
+Route::get('/posts', function () {
     return view('posts');
 })->middleware(['auth', 'verified'])->name('posts');
 

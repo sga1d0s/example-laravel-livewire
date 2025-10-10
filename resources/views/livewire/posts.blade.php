@@ -1,10 +1,19 @@
 <div>
-    @foreach ($posts as $post)
-        <div wire:key='{{ $post->id }}'>
-            <div wire:key='{{ $post->id }}' class="flex">
-                <h3 class="p-3">{{ $post->title }}</h3>
-                <p class="p-3">{{ $post->text }}</p>
-            </div>
-        </div>
-    @endforeach
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($posts as $post)
+                <tr wire:key='{{ $post->id }}'>
+                    <td>{{ $post->title }}</td>
+                    <td>{{ $post->text }}</td>
+                </tr>
+            @endforeach
+
+        </tbody>
+    </table>
 </div>
