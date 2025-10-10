@@ -2,12 +2,14 @@
     {{-- Post test --}}
     <h1>Create Post Component</h1>
 
-    <div x-data="{ count: 0 }">
-        <span x-text="count"></span>
-    </div>
+    {{-- acceso a propiedades del PHP con '$wire' --}}
+    Current title <span x-text="$wire.title.toUpperCase()"></span>
+
+    {{-- llamada a la función 'save()' del php --}}
+    <button type="button" class="my-3" x-on:click="$wire.save()">submit</button>
 
     <form wire:submit='save'>
-        <div class="block">
+        <div class="flex flex-col items-left space-y-3 w-40">
             <label>
                 <span>Title:</span>
                 <input type="text" wire:model='title'>
@@ -18,16 +20,17 @@
 
             <label>
                 <span>Text:</span>
-                <input type="text" wire:model='text'>
+                <textarea type="text" wire:model='text'></textarea>
+                <small>Characters
+                    {{-- contar las letras con método length --}}
+                    <span x-text="$wire.text.length"></span>
+                </small>
                 @error('text')
                     <em>{{ $message }}</em>
                 @enderror
             </label>
             <button type="submit">Save</button>
-
         </div>
-
-
     </form>
 
     <div>
