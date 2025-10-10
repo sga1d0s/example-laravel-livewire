@@ -9,3 +9,65 @@ button {
 li {
   @apply content-end
 }
+
+/* resources/css/app.css */
+
+table {
+  @apply w-full border-collapse text-sm;
+}
+
+thead {
+  @apply bg-gray-100 text-left;
+}
+
+th {
+  @apply px-4 py-2 font-semibold border-b border-gray-300;
+}
+
+td {
+  @apply px-4 py-2 border-b border-gray-200;
+}
+
+tr:hover {
+  @apply bg-gray-50;
+}
+
+/* FORMULARIO BASE */
+form {
+  @apply flex flex-col space-y-4 max-w-sm p-4 bg-white rounded-lg shadow;
+}
+
+label {
+  @apply flex flex-col text-sm font-medium text-gray-700;
+}
+
+input[type="text"],
+textarea {
+  @apply mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+}
+
+button[type="submit"],
+button[type="button"] {
+  @apply bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition-colors;
+}
+
+small {
+  @apply text-xs text-gray-500 mt-1;
+}
+
+/* LISTA DE POSTS */
+li {
+  @apply list-none text-sm;
+}
+
+div.post-item {
+  @apply flex items-center justify-between p-2 border-b border-gray-200;
+}
+
+div.post-item strong {
+  @apply font-semibold text-gray-800;
+}
+
+div.post-item button {
+  @apply bg-red-500 text-white px-2 py-1 rounded-md hover:bg-red-600 transition-colors;
+}

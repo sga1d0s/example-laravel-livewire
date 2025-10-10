@@ -11,11 +11,11 @@ class CreatePost extends Component
 {
     public $posts;
 
-     /* variable require con alias */
-    #[Validate('required|min:3')] 
+    /* variable require con alias */
+    #[Validate('required|min:3')]
     public $title = '';
- 
-    #[Validate('required|min:3', as: 'content')] 
+
+    #[Validate('required|min:3', as: 'content')]
     public $text = '';
 
     public function save()
@@ -32,8 +32,11 @@ class CreatePost extends Component
 
         $this->dispatch('post-created', author: $author);
 
-        return redirect()->to('posts')
-            ->with('status', 'Post created!');
+        /* redirect with navigate ok */
+        $this->redirect('/posts', navigate: true);
+
+        /* return redirect()->to('posts')
+            ->with('status', 'Post created!'); */
     }
 
     public function delete($id)

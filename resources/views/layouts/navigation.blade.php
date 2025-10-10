@@ -12,10 +12,10 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('counter')" :active="request()->routeIs('counter')">
+                    <x-nav-link wire:navigate :href="route('counter')" :active="request()->routeIs('counter')">
                         {{ __('Counter') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('create-post')" :active="request()->routeIs('create-post')">
+                    <x-nav-link wire:navigate :href="route('create-post')" :active="request()->routeIs('create-post')">
                         {{ __('Create Post') }}
                     </x-nav-link>
                     <x-nav-link :href="route('posts')" :active="request()->routeIs('posts')">

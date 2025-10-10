@@ -9,41 +9,39 @@
     <button type="button" class="my-3" x-on:click="$wire.save()">submit</button>
 
     <form wire:submit='save'>
-        <div class="flex flex-col items-left space-y-3 w-40">
-            <label>
-                <span>Title:</span>
-                <input type="text" wire:model='title'>
-                @error('title')
-                    <em>{{ $message }}</em>
-                @enderror
-            </label>
+        <label>
+            <span>Title:</span>
+            <input type="text" wire:model='title'>
+            @error('title')
+                <em>{{ $message }}</em>
+            @enderror
+        </label>
 
-            <label>
-                <span>Text:</span>
-                <textarea type="text" wire:model='text'></textarea>
-                <small>Characters
-                    {{-- contar las letras con método length --}}
-                    <span x-text="$wire.text.length"></span>
-                </small>
-                @error('text')
-                    <em>{{ $message }}</em>
-                @enderror
-            </label>
-            <button type="submit">Save</button>
-        </div>
+        <label>
+            <span>Text:</span>
+            <textarea wire:model='text'></textarea>
+            <small>
+                Characters <span x-text="$wire.text.length"></span>
+            </small>
+            @error('text')
+                <em>{{ $message }}</em>
+            @enderror
+        </label>
+
+        <button type="submit">Save</button>
     </form>
 
     <div>
         @foreach ($posts as $post)
-            <div>
-
-            </div>
-            <div wire:key='{{ $post->id }}' class="flex m-3">
-                <li><strong>{{ $post->title }}</strong> - {{ $author }} - </li>
-
-                <button wire:click='delete({{ $post->id }})' wire:confirm='¿Seguro que quieres eliminar?'
-                    class="border p-1 rounded-lg">
-                    Eliminar
+            <div class="post-item" wire:key="{{ $post->id }}">
+                <li>
+                    <strong>{{ $post->title }}</strong> — {{ $author }}
+                </li>
+                <li>
+                    <strong>{{ $post->text }}</strong>
+                </li>
+                <button wire:click="delete({{ $post->id }})" wire:confirm="¿Seguro que quieres eliminar?">
+                    Delete
                 </button>
             </div>
         @endforeach
